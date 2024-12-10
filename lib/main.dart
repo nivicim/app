@@ -1,3 +1,5 @@
+import 'package:app/escanear_qrcode.dart';
+import 'package:app/gerar_qrcode.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'QR Code Scanner & Generator',
+      title: 'QR Code: Scanner e Gerador',
       debugShowCheckedModeBanner: false,
       home: const HomePage(),
       theme: ThemeData(
@@ -34,7 +36,25 @@ class _MyWidgetState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      appBar: AppBar(title: const Text('QR Code Scanner & Generator'),),
+      appBar: AppBar(title: const Text('QR Code: Gerador e Scanner'),),
+      body: Center
+      (
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(onPressed: (){
+              setState(() {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const EscanearQRCode()));
+              });
+            }, child: const Text("Escanear QR Code")) ,const SizedBox(height: 40,),
+            ElevatedButton(onPressed: (){
+              setState(() {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const GerarQrcode()));
+              });
+            }, child: const Text("Gerar QR Code"))
+          ],
+        ),
+      ),
 
     );
   }
